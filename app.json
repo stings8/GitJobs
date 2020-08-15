@@ -1,0 +1,12 @@
+{
+  "name": "gitjobs",
+  "displayName": "gitjobs",
+  "expo": {
+    "name": "gitjobs",
+    "slug": "gitjobs",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
