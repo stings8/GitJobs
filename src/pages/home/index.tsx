@@ -1,32 +1,36 @@
 import React from 'react';
 import { Feather as Icon} from '@expo/vector-icons'
-import { View, ImageBackground, Image, Text, StyleSheet } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import { View, ImageBackground, StyleSheet, Image, Text } from 'react-native';
+import {RectButton } from 'react-native-gesture-handler'
+import Search from '../search';
+
+import {useNavigation, useRoute} from '@react-navigation/native';
+
+import Header from "../../components/Header";
+
 
 const Home = () => {
+  const {navigate} = useNavigation();
+  const {name} = useRoute();
+
+  const handleNavigate = () => {
+    navigate('Search')
+  }
+
   return (
+
   <ImageBackground  
   source={require('../../assets/background.png')} 
   style={styles.container}
-  resizeMode="center"
+  resizeMode="cover"
   > 
-    <View style={styles.main}>
-      <Image source={require('../../assets/logo.png')}/>
-      <Text style={styles.title}>Busque oportunidades de emprego</Text>
-    </View>
+  <Header navigate={handleNavigate} title={name}/>
+  <View style={styles.main}>
+    <Image source={require('../../assets/logo.png')} />
+    <Text style={styles.title}>Busque sua oportunidade </Text>
+  </View>
 
-    <View style={styles.footer}>
-      <RectButton style={styles.button} onPress={() =>{}} >
-        <View style={styles.buttonIcon}>
-          <Text>
-            <Icon name="search" color="#fff" size={24}/>
-          </Text>
-        </View>
-        <Text style={styles.buttonText}>
-          Buscar
-        </Text>
-      </RectButton>
-    </View>
+  
 
   </ImageBackground>);
 };
@@ -34,12 +38,13 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 32,
-    backgroundColor: '#f0f0f5'
+    backgroundColor: '#f0f0f5',
+   
   },
 
   main: {
     flex: 1,
+    padding: 32,
     justifyContent: 'center',
   },
 
