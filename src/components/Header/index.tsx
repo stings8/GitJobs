@@ -14,8 +14,6 @@ interface Props {
   navigate: () => void
 }
 
-
-
 const Header: React.FC<Props> = ({title, searchOpen = false, searchValue = '', onChangeSearchValue=() => {}, navigate}) => {
   return (
     <View style={styles.container}>

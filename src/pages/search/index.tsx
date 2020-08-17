@@ -1,5 +1,5 @@
-import React, {useEffect, useState, useCallback} from 'react';
-import { View, StyleSheet, FlatList, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import React, { useState, useCallback} from 'react';
+import { View, StyleSheet, FlatList, Text, Image, ActivityIndicator } from 'react-native';
 import api from '../../services/api';
 import {RectButton} from 'react-native-gesture-handler'
 import Header from '../../components/Header';
@@ -62,10 +62,14 @@ const Search = () => {
   function renderItem({ item})  {
     return (
       <RectButton style={styles.jobItem}>
-          <Image style={styles.companyLogo} source={{ uri: item.company_logo }}/>
+          { item.company_logo ? <Image style={styles.companyLogo} source={{ uri: item.company_logo }}/> :
+          <Image style={styles.companyLogo} source={require('../../assets/briefcase.png')}/> }
+      
+
           <View style={styles.jobInfo}>
-          <Text>{item.company}</Text>
-          <Text>{item.company}</Text>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text>Empresa : {item.company}</Text>
+          <Text>Tipo : {item.type}</Text>
           </View>
       </RectButton>
     );
@@ -124,75 +128,39 @@ const styles = StyleSheet.create({
 
 
   companyLogo: {
-    width: 50,
-    height: 50,
-    borderRadius: 25
+    width: 80,
+    height: 80,
+    borderRadius: 50,
+    marginEnd: 8
   },
 
   jobItem: {
     height: 120,
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 16
   },
 
-  title: {
-    color: '#322153',
-    fontSize: 32,
-    fontFamily: 'Ubuntu_700Bold',
-    maxWidth: 260,
-    marginTop: 64,
-  },
 
   description: {
     color: '#6C6C80',
-    fontSize: 16,
+    fontSize: 14,
     marginTop: 16,
     fontFamily: 'Roboto_400Regular',
     maxWidth: 260,
     lineHeight: 24,
   },
 
-  footer: {},
-
-  select: {},
-
-  input: {
-    height: 60,
-    backgroundColor: '#FFF',
-    borderRadius: 10,
-    marginBottom: 8,
-    paddingHorizontal: 24,
+  title: {
     fontSize: 16,
-  },
-
-  button: {
-    backgroundColor: '#34CB79',
-    height: 60,
-    flexDirection: 'row',
-    borderRadius: 10,
-    overflow: 'hidden',
-    alignItems: 'center',
-    marginTop: 8,
-  },
-
-  buttonIcon: {
-    height: 60,
-    width: 60,
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-
-  buttonText: {
-    flex: 1,
-    justifyContent: 'center',
-    textAlign: 'center',
-    color: '#FFF',
-    fontFamily: 'Roboto_500Medium',
-    fontSize: 16,
+    color: '#333',
+    maxWidth: 260,
+    fontFamily: 'Ubuntu_700Bold',
+    fontWeight: 'bold'
   }
+
+
+  
 });
 
 export default Search;
