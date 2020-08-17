@@ -5,8 +5,8 @@ const Help = () => {
   const infos = [
     {
       id: "0",
-      title: "Como funciona o GitJobs ?",
-      description: "GitHub Jobs é um ótimo lugar para atrair os melhores talentos técnicos para os cargos de desenvolvimento de software aberto da sua empresa."
+      title: "How GitHub Jobs Works ?",
+      description: "GitHub Jobs is a great place attract the best technical talent for your company's open software development positions."
     },
     {
       id: "1",
